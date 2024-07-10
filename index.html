@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Learning Neural Volumetric Pose Features for Camera Localization">
+  <meta name="keywords" content="Absolute pose regression, Pose feature, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Neural Volumetric Pose Features for Camera Localization</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+<!--  <link rel="icon" href="./static/images/favicon.svg">-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Learning Neural Volumetric Pose Features<br> for Camera Localization</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Jingyu Lin</a><sup>1*&dagger;</sup>,&nbsp&nbsp&nbsp</span>
+            <span class="author-block"><a href="https://gujiaqivadin.github.io/">Jiaqi Gu</a><sup>2&dagger;</sup>,&nbsp&nbsp&nbsp</span>
+            <span class="author-block"><a href="https://scholar.google.com.eg/citations?user=pdx6Lg8AAAAJ">Bojian Wu</a><sup>3</sup>,&nbsp&nbsp&nbsp</span>
+            <span class="author-block"><a href="https://lubinfan.github.io/">Lubin Fan</a><sup>2&ddagger;</sup>,&nbsp&nbsp&nbsp</span>
+            <span class="author-block">Renjie Chen<sup>1&ddagger;</sup>,&nbsp&nbsp&nbsp</span>
+            <span class="author-block">Ligang Liu<sup>1</sup>,&nbsp&nbsp&nbsp</span>
+            <span class="author-block"><a href="https://scholar.google.com.eg/citations?user=T9AzhwcAAAAJ">Jieping Ye</a><sup>2</sup>&nbsp&nbsp&nbsp</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Science and Technology of China &nbsp&nbsp&nbsp</span>
+            <span class="author-block"><sup>2</sup>Alibaba Cloud &nbsp&nbsp&nbsp</span>
+            <span class="author-block"><sup>3</sup>Zhejiang University &nbsp&nbsp&nbsp</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>This work was done when Jingyu Lin was an intern at Alibaba Cloud.</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>&dagger;</sup>Equal contributions.</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>&ddagger;</sup>Corresponding authors.</span>
+          </div>
+
+          <div class="column has-text-centered">
+<!--            <div class="publication-links">-->
+<!--               PDF Link.-->
+<!--              <span class="link-block">-->
+<!--                <a href=""-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fas fa-file-pdf"></i>-->
+<!--                  </span>-->
+<!--                  <span>Paper</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.12800"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+<!--              <span class="link-block">-->
+<!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fab fa-youtube"></i>-->
+<!--                  </span>-->
+<!--                  <span>Video</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Comming Soon)</span>
+                  </a>
+              </span>
+              <!-- Huggingface Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">&#129303</span>
+                  <span>Demo (Comming Soon)</span>
+                </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--<section class="hero teaser">-->
+<!--  <div class="container is-max-desktop">-->
+<!--    <div class="columns is-centered">-->
+<!--      <div class="column is-four-fifths">-->
+<!--          <img src="static/images/teaser.png" alt="Teaser image."/>-->
+<!--          <h2 class="subtitle has-text-justified">-->
+<!--            Groma is a multimodal large language model with exceptional region understanding and visual grounding capabilities.-->
+<!--            It can take user-defined region inputs (boxes) as well as generate long-form responses that are grounded to visual context.-->
+<!--          </h2>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce a novel neural volumetric pose feature, termed PoseMap, designed to enhance camera localization by encapsulating the information between images and the associated camera poses. Our framework leverages an Absolute Pose Regression (APR) architecture, together with an augmented NeRF module. This integration not only facilitates the generation of novel views to enrich the training dataset but also enables the learning of effective pose features. Additionally, we extend our architecture for self-supervised online alignment, allowing our method to be used and fine-tuned for unlabelled images within a unified framework. Experiments demonstrate that our method achieves 14.28% and 20.51% performance gain on average in indoor and outdoor benchmark scenes, outperforming existing APR methods with state-of-the-art accuracy.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <!-- <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+              <img src="static/images/teaser.jpg" alt="Teaser image."/>
+              <h2 class="subtitle has-text-justified">
+                Groma is a multimodal large language model with exceptional region understanding and visual grounding capabilities.
+                It can take user-defined region inputs (boxes) as well as generate long-form responses that are grounded to visual context.
+              </h2>
+          </div>
+        </div>
+    </div> -->
+  </div>
+</section>
+
+<br>
+<br>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@InProceedings{lin2024posemap,
+    author = {Jingyu Lin, Jiaqi Gu, Bojian Wu, Lubin Fan, Renjie Chen, Ligang Liu, Jieping Ye},
+    title = {Learning Neural Volumetric Pose Features for Camera Localization},
+    booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+    year = {2024}
+}</code></pre>
+  </div>
+</section>
+
+
+
+</body>
+</html>
