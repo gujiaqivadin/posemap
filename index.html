@@ -39,6 +39,8 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -94,7 +96,7 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Arxiv</span>
                 </a>
               </span>
               <!-- Video Link. -->
@@ -173,6 +175,99 @@
           </div>
         </div>
     </div> -->
+  </div>
+</section>
+
+
+<br>
+<br>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <img src="./static/images/fig1.png" />
+        <figcaption>Figure: Pipeline.</figcaption>
+        <div class="content has-text-justified">
+          <p>
+            Given a set of images and the associated camera poses \( \{(I, p)\} \), our goal is to train a neural network that takes a query image \( I^* \) as input and directly outputs its corresponding camera pose \( p^* \).
+            Here the camera pose is represented as a \( 3\times 4 \) matrix which is a combination of translation and rotation with regard to a reference coordinate system.
+            The whole pipeline is demonstrated in the figure</a>.
+            It contains two main entangled modules: APRNet and NeRF-P.
+            Concretely, with an input image \( I \), APRNet leverages separate branches to extract image features \( \mathcal{F}_{image}(I) \) and estimates the camera pose \( \hat{p} \).
+            With the given ground-truth pose, NeRF-P subsequently renders a synthetic image \( \hat{I} \), which will be forwarded to the feature extraction branch of APRNet and obtain \( \mathcal{F}_{image}(\hat{I}) \).
+        </p>
+        <p>
+            On the other hand, we propose a novel implicit pose features \( \mathcal{F}_{pose}(\hat{p}) \) called <i>PoseMap</i>, by enhancing the volumetric rendering module with an extra pose feature branch on original NeRF architecture, which will be further used for pose prediction.
+            The key idea of this design choice is that NeRF itself is an abstraction of visual and geometric information.
+            We propose an autoencoder-style pose branch to leverage NeRF to aggregate global attributes from samples of light rays on PoseMap and a pose decoder of a series of MLP decoders for the distillation of implicit pose features.
+            This novel combination allows for a more precise and detailed representation of the camera pose.
+            In all, APRNet is optimized, with the supervision of the ground-truth PoseMap \( \mathcal{F}_{pose}(p) \), and by minimizing the discrepancies of image features.
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<br>
+<br>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <img src="./static/images/fig2.png" />
+        <figcaption>Table: Results on 7-scenes dataset.</figcaption>
+        <div class="content has-text-justified">
+          <p>
+            First, we compare our methods with one-frame APR methods on 7-scenes dataset. The Table shows that our method achieves the best results on all indoor scenes.
+            To be specific, our main pipeline, denoted as PMNet, achieves state-of-the-art performance. Moreover, PMNet<sub>ud</sub> finetuned in the self-supervising stage with unlabelled data further enhances the pose regression accuracy. The translation and rotation errors are reduced by 14.28% (0.07 &rarr; 0.06) and 12.67%(2.21 &rarr; 1.93) on average, respectively. 
+            For the Heads and Pumpkin scenes, our results are comparable to those of DFNet, though not superior. Upon reviewing the dataset, we found that these scenes are relatively small, with limited visible range and camera pose variations. Consequently, the benefits of our PoseMap may not be particularly significant.
+          </p>
+        </div>
+        <img src="./static/images/fig3.png" />
+        <figcaption>Table: Results on Cambridge Landmarks dataset.</figcaption>
+        <div class="content has-text-justified">
+          <p>
+            Then we evaluate our methods on the more challenging dataset, i.e., Cambridge Landmarks. As shown in the Table, our PMNet leads to the dominant performance advantage over all scenes in single-frame APR methods. 
+            Compared to DFNet<sub>dm</sub> which also uses unlabelled data for online training, our method gets a performance gain by 20.51% (0.39 &rarr; 0.31) and 17.71% (0.96 &rarr; 0.79) for translations and rotations, respectively.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<br>
+<br>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Visualization</h2>
+        <img src="./static/images/fig4.png" />
+        <figcaption>Figure: Visualization.</figcaption>
+        <img src="./static/images/fig5.png" />
+        <figcaption>Figure: 6-DOF Camera Pose Regression.</figcaption>
+        <div class="content has-text-justified">
+          <p>
+            We visualize the camera localization sequences on 7-scenes dataset in Figure. It shows that our trajectories mostly coincide with the ground truth that means our method could estimate camera positions with high accuracy. Comparing with the SOTA method (i.e., DFNet), our method achieves better estimation results since our trajectories are much closer to the ground truth, and the number of high rotation error zones is less.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
